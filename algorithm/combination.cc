@@ -25,4 +25,5 @@ int main()
     }
     std::cout << std::endl;
   } while (prev_permutation(selectors.begin(), selectors.end()));
+  return 0;
 }

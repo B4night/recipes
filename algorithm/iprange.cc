@@ -24,7 +24,7 @@ int findIpValue(const std::vector<IPrange>& ranges, uint32_t ip)
   if (!ranges.empty()) {
     IPrange needle = { ip, 0, 0 };
     std::vector<IPrange>::const_iterator it
-        = std::lower_bound(ranges.begin(), ranges.end(), needle);
+        = std::lower_bound(ranges.begin(), ranges.end(), needle); // 找到[begin,end]中第一个>=needle的元素
     if (it == ranges.end()) {
       --it;
     } else if (it != ranges.begin() && it->startIp > ip) {
@@ -51,7 +51,7 @@ int main()
   ranges.push_back(r1);
 
   std::sort(ranges.begin(), ranges.end());
-  assert(std::adjacent_find(ranges.begin(), ranges.end()) == ranges.end());
+  assert(std::adjacent_find(ranges.begin(), ranges.end()) == ranges.end()); // 此assert确保ranges中没有重复的元素
 
   int v = findIpValue(ranges, 0);
   assert(v == -1);
